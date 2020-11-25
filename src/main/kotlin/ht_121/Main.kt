@@ -5,16 +5,18 @@ fun main() {
     val input = readLine()
     if (input!!.matches("-?\\d+(\\.\\d+)?".toRegex())) {
         val inputPrice: Double = input.toDouble()
-        if (inputPrice >= 35.0) {
-            val commissionPercent = 0.75
+        val commissionPercent = 0.75
+        if (inputPrice * commissionPercent >= 35.0) {
             val commissionPrice = commissionPercent.times(inputPrice) / 100
             println(
-                """Комиссия будет составлять $commissionPrice
+                    """Комиссия будет составлять $commissionPrice
 Хорошего дня)"""
             )
-        } else println(
-            """Сумма должна быть больше, чем 35 рублей...
-Попробуйте ещё раз)"""
-        )
+        } else {
+            val commissionPrice = 35
+            println(
+                    """Комиссия будет составлять $commissionPrice
+Хорошего дня)""")
+        }
     } else println("Введите число, пожалуйста)")
 }
